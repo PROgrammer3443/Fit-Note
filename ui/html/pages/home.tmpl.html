@@ -1,0 +1,156 @@
+{{template "base" .}}
+
+{{define "title"}}Home{{end}}
+
+{{define "main"}}
+{{if .LoggedIn}}
+<div class="dashboard">
+
+    <div class="welcome-message">
+        <h1>Welcome back, {{.User.Name}}!</h1>
+        <p>Ready to tackle your fitness goals today?</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+            <h2>Body Stats</h2>
+
+            <p>
+                <strong>Height:</strong>
+                {{.User.Height}} cm
+            </p>
+
+            <p>
+                <strong>Weight:</strong>
+                {{.User.Weight}} kg
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Calories to Eat</h2>
+            <p>
+                {{ .C_Eat}} kcal/day
+            </p>
+            <h2>Calorie to Burn</h2>
+            <p>
+                {{.C_Burn}} kcal/day
+            </p>
+            <button class="log-meal-btn">
+                <a id="meal-btn" href="/food">Log Meal</a>
+            </button>
+            <button class="log-meal-btn">
+                <a id="meal-btn" href="/workout">Log Workout</a>
+            </button>
+        </div>
+        </div>
+
+    </div>
+</div>
+{{else}}
+<div class="hero">
+    <div class="hero-content">
+
+        <h1>
+            IT DOESN'T GET EASIER.<br>
+            YOU GET BETTER.
+        </h1>
+
+        <div class="hero-buttons">
+            <a href="/plans" class="btn btn-primary">
+                My Plans ↗
+            </a>
+
+            <a href="/contact" class="btn btn-secondary">
+                Contact Now ↗
+            </a>
+        </div>
+
+        <div class="trainer-badge">
+            Certified Trainer
+        </div>
+    </div>
+</div>
+
+<section class="ticker">
+    <div class="ticker-track">
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">exercise</span>
+        </div>
+
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">fitness_center</span>
+        </div>
+
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">exercise</span>
+        </div>
+
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">fitness_center</span>
+        </div>
+
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">exercise</span>
+        </div>
+
+        <span class="text">TRAIN WITH PURPOSE</span>
+        <div class="benefit-icon">
+            <span class="material-symbols-outlined">fitness_center</span>
+        </div>
+    </div>
+</section>
+
+<div class="benefits">
+    <div class="benefits-header">
+        <h2>Benefits of Working Out</h2>
+    </div>
+
+    <div class="benefits-grid">
+
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <span class="material-symbols-outlined">exercise</span>
+            </div>
+            <h3>Build Confidence</h3>
+            <p>
+                This is the space to highlight the benefits you offer and
+                what clients can gain from choosing your services. Focus on
+                the value you deliver and solutions you can offer.
+            </p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <span class="material-symbols-outlined">sentiment_excited</span>
+            </div>
+            <h3>Boost Your Mood</h3>
+            <p>
+                This is the space to highlight the benefits you offer and
+                what clients can gain from choosing your services. Focus on
+                the value you deliver and solutions you can offer.
+            </p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <span class="material-symbols-outlined">ecg_heart</span>
+            </div>
+            <h3>Increase Energy Levels</h3>
+            <p>
+                This is the space to highlight the benefits you offer and
+                what clients can gain from choosing your services. Focus on
+                the value you deliver and solutions you can offer.
+            </p>
+        </div>
+
+    </div>
+</div>
+{{end}}
+{{end}}

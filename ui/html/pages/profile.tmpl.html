@@ -1,0 +1,45 @@
+{{template "base" .}}
+
+{{define "title"}}Signup Profile{{end}}
+
+{{define "main"}}
+<div class="signup-container">
+    <h2>Signup to FitNote</h2>
+    <form action="/signup/profile" method="POST" class="signup-form">
+        <label for="height">Height</label>
+        {{with .Form.FieldErrors.height}}
+            <label class="error">{{.}}</label>
+        {{end}}
+        <input type="number" id="height" name="height" required>
+
+        <label for="weight">Weight</label>
+        {{with .Form.FieldErrors.weight}}
+            <label class="error">{{.}}</label>
+        {{end}}
+        <input type="number" id="weight" name="weight" required>
+
+        <label for="ca_level">Current Activity Level</label>
+        <select name="ca_level" id="ca-select">
+            <option value="">-Please select an option-</option>
+            <option value="0">Sedentary</option>
+            <option value="1">Lightly Active</option>
+            <option value="2">Moderately Active</option>
+            <option value="3">Very Active</option>
+            <option value="4">Super Active</option>
+        </select>
+
+
+        <label for="ta_level">Target Activity Level</label>
+        <select name="ta_level" id="ta-select">
+            <option value="">-Please select an option-</option>
+            <option value="0">Sedentary</option>
+            <option value="1">Lightly Active</option>
+            <option value="2">Moderately Active</option>
+            <option value="3">Very Active</option>
+            <option value="4">Super Active</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{{end}}

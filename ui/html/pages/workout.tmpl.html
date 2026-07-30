@@ -1,0 +1,138 @@
+{{template "base" .}}
+
+{{define "title"}}Workout{{end}}
+
+{{define "main"}}
+
+<section class="workout-page">
+
+    <div class="workout-header">
+        <h1>Today's Workout</h1>
+
+        <div class="burn-badge">
+            Burn {{.DailyBurn}} Calories
+        </div>
+    </div>
+
+    <div class="exercise-list">
+            
+        {{range .CurrentExercises}}
+        <div class="exercise-card">
+            
+            <h2>{{.Name}}</h2>
+
+            <p>
+                2 sets x {{.Amount}} {{.Unit}}
+            </p>
+
+            <div class="exercise-actions">
+
+                <button
+                    type="button"
+                    class="swap-btn"
+                    data-exercise="{{.ID}}"
+                    onclick="openSwapModal({{.ID}})">
+
+                    Choose Instead
+
+                </button>
+
+                <form action="/workout/finish" method="POST">
+
+                    <input
+                        type="hidden"
+                        name="exercise_id"
+                        value="{{.ID}}">
+
+                    <button
+                        type="submit"
+                        class="finish-btn {{if .Finished}}completed{{end}}">
+
+                        {{if .Finished}}
+                            <span class="material-symbols-outlined" style="color: #4CBD56; font-weight: bold;">
+                                check
+                            </span>
+                        {{else}}
+                            <span class="material-symbols-outlined">
+                                done_outline
+                            </span>
+                        {{end}}
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+        {{end}}
+
+    </div>
+
+</section>
+
+
+<div class="modal-overlay" id="swapModal">
+
+    <div class="swap-modal">
+
+        <button
+            type="button"
+            class="close-modal"
+            id="closeSwapModal"
+            onclick="closeSwapModal()">
+
+            <span class="material-symbols-outlined">
+                close
+            </span>
+
+        </button>
+
+        <h2>Choose Another Exercise</h2>
+
+        <form action="/workout/swap" method="POST">
+
+            <input
+                type="hidden"
+                name="current_exercise_id"
+                id="currentExerciseID">
+
+            {{range .Alternatives}}
+
+            <label class="swap-option">
+
+                <input
+                    type="radio"
+                    name="replacement_exercise_id"
+                    value="{{.ID}}"
+                    required>
+
+                <div>
+
+                    <strong>{{.Name}}</strong>
+
+                    <span>
+                        {{.Amount}} {{.Unit}}
+                    </span>
+
+                </div>
+
+            </label>
+
+            {{end}}
+
+            <button
+                type="submit"
+                class="replace-btn">
+
+                Replace Exercise
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{{end}}
