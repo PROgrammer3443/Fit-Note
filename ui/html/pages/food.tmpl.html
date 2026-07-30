@@ -1,1 +1,182 @@
+{{template "base" .}}
 
+{{define "title"}}Food Logs{{end}}
+
+{{define "main"}}
+<section class="food-page">
+    <div class="food-header">
+        <h1>Food Logs</h1>
+
+        <button
+            type="button"
+            class="log-meal-btn"
+            id="openMealModal">
+
+            + Log Meal
+
+        </button>
+    </div>
+
+    {{if .Food}}
+        <div class="food-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meal Type</th>
+                        <th>Total Calories</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .Food}}
+                        {{$mealID := .ID}}
+                        
+                        <tr class="meal-row">
+                            <td>{{.MealType}}</td>
+                            <td>{{.TotalCalories}} cal</td>
+                            <td>
+                                <button
+                                    type="button"
+                                    class="expand-btn"
+                                    onclick="toggleEntries('entries-{{$mealID}}', this)">
+                                    <span class="material-symbols-outlined">
+                                        arrow_drop_down
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr id="entries-{{$mealID}}" class="entries-row">
+                            <td colspan="3">
+                                {{if .Entries}}
+                                    <table class="food-list" id="foodEntriesTable">
+                                        <tbody>
+                                            {{range .Entries}}
+                                            <tr>
+                                                <td>{{.Food_name}}</td>
+                                                <td class="entry-calories">{{.Calories}} cal</td>
+                                                <td></td>
+                                            </tr>
+                                            {{end}}
+                                        </tbody>
+                                    </table>
+                                {{else}}
+                                    <div style="padding: 8px;">No foods added today.</div>
+                                {{end}}
+                                
+                                <div style="margin-top: 20px;">
+                                    <button class="add-food-btn" data-meal-id="{{$mealID}}">
+                                        + Add Food
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+
+    {{else}}
+        <div class="food-empty">
+            <h2>No Meals Logged</h2>
+
+            <p>
+                Track your nutrition by adding your first meal for today.
+            </p>
+        </div>
+    {{end}}
+    <div class="modal-overlay" id="foodModal">
+        <div class="meal-modal">
+
+            <button
+                type="button"
+                class="close-modal"
+                id="closeFoodModal"
+                onclick="closeFoodModal()">
+
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+
+            </button>
+
+            <h3>Add Food</h3>
+
+            <form
+                action="/food/entry/new"
+                method="POST"
+                class="meal-form">
+
+                <input
+                    type="hidden"
+                    name="meal_id"
+                    id="mealIDInput">
+
+                <label>Food Name</label>
+
+                <input
+                    type="text"
+                    name="food_name"
+                    required>
+
+                <label>Calories</label>
+
+                <input
+                    type="number"
+                    name="calories"
+                    min="0"
+                    required>
+
+                <button
+                    type="submit"
+                    class="log-meal-btn">
+
+                    Save Food
+
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="modal-overlay" id="mealModal">
+        <div class="meal-modal">
+
+            <button
+                type="button"
+                class="close-modal"
+                id="closeMealModal">
+
+                <span class="material-symbols-outlined">close</span>
+
+            </button>
+
+            <h3>Log Meal</h3>
+
+            <form action="/food/new" method="POST" class="meal-form">
+
+                <label>Meal Type</label>
+
+                <select name="meal_type" required>
+                    <option value="">Choose a meal</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+                </select>
+
+                <button
+                    type="submit"
+                    class="log-meal-btn">
+
+                    Save Meal
+
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</section>
+
+{{end}}
