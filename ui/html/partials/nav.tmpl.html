@@ -1,1 +1,27 @@
+{{define "nav"}}
+<nav class="navbar">
+    <div class="logo">
+        <strong>FitNote</strong><br>
+    </div>
 
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/plans">Plans</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+    
+    <ul class="nav-links">
+        {{if .LoggedIn}}
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-btn">
+                    Log out
+                </button>
+            </form>
+        {{else}}
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="/login">Log in</a></li>
+        {{end}}
+    </ul>
+</nav>
+{{end}}
