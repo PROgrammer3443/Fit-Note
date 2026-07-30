@@ -1,1 +1,1046 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-decoration: none;
+}
 
+html,
+body {
+    height: 100%;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2rem;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    margin: 0;
+    padding: 12px 10px;
+
+    background: #222;
+    border-radius: 5px;
+}
+
+.nav-links a,
+.signup-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.logout-btn {
+    color: white;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+
+.nav-links .live {
+    text-decoration: underline;
+}
+
+.signup-btn {
+    padding: 12px 10px;
+    background: #222;
+    border-radius: 5px;
+}
+
+.navbar strong {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Bebas Neue";
+    letter-spacing: 1px;
+
+    color: white;
+    padding: 12px 10px;
+    background: #222;
+    border-radius: 5px;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    border-bottom: 5px solid #999;
+    display: flex;
+    align-items: center;
+
+    background: url("/static/img/Bg-Img.png") center/cover;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+
+    margin-left: 4rem;
+    color: white;
+}
+
+.hero h1 {
+    font-family: "Bebas Neue";
+    font-size: 90px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 1rem 2rem;
+
+    border: 1px solid white;
+    border-radius: 8px;
+
+    color: white;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+}
+
+.trainer-badge {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem;
+
+    border: 2px solid white;
+    border-radius: 50px;
+
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.benefits {
+    display: block;
+    padding: 100px 80px;
+    background: #f2f2f2;
+}
+
+.benefits-header h2 {
+    margin-bottom: 100px;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+}
+
+.benefit-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit-icon {
+    font-size: 4rem;
+    margin-bottom: 25px;
+}
+
+.benefit-card h3 {
+    margin-bottom: 20px;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+}
+
+.benefit-card p {
+    max-width: 420px;
+
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+
+.material-symbols-outlined {
+    font-size: 64px !important;
+    color: #ff582a;
+}
+
+.signup-container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 120px 20px 40px;
+    background: url("/static/img/Signup-Bg-Img.png") center/cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+
+.signup-container h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.signup-form {
+    width: 100%;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 2.5rem;
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.signup-form label {
+    font-weight: 700;
+    color: #222;
+}
+
+.signup-form input,
+.signup-form select {
+    width: 100%;
+
+    padding: 1rem;
+
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-family: inherit;
+
+    background: white;
+
+    transition: border-color 0.2s;
+}
+
+.signup-form input:focus,
+.signup-form select:focus {
+    outline: none;
+    border-color: #ff582a;
+}
+
+.signup-form .btn {
+    margin-top: 1rem;
+
+    cursor: pointer;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #222;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.signup-form .btn:hover {
+    background: #ff582a;
+    color: white;
+}
+
+.ticker {
+    width: 100%;
+    overflow: hidden;
+
+    background: #f2f2f2;
+    padding: 20px 0;
+
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    width: max-content;
+
+    animation: scroll-left 20s linear infinite;
+}
+
+.ticker-track .text {
+    flex-shrink: 0;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 5rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #000;
+}
+
+.ticker-track .material-symbols-outlined {
+    font-size: 90px !important;
+    margin-top: 30px;
+    color: #000;
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.error {
+    color: #C0392B;
+    font-weight: bold;
+    display: block;
+}
+
+.error + input {
+    border-color: #C0392B !important;
+    border-width: 2px !important;
+}
+
+.dashboard {
+    min-height: 100vh;
+
+    padding: 140px 80px 80px;
+
+    background: url("/static/img/Bg-Img.png") center/cover;
+}
+
+.welcome-message {
+    margin-bottom: 3rem;
+}
+
+.welcome-message h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.welcome-message p {
+    margin-top: 0.5rem;
+
+    font-size: 1.3rem;
+    color: lightgray;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 2rem;
+}
+
+.dashboard-card {
+    padding: 2rem;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    margin-bottom: 1.5rem;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+
+    color: #222;
+}
+
+.dashboard-card p {
+    margin-bottom: 1rem;
+
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.workout-list {
+    margin-bottom: 2rem;
+
+    list-style: none;
+}
+
+.workout-list li {
+    margin-bottom: 0.8rem;
+
+    font-size: 1.1rem;
+}
+
+#meal-btn {
+    text-decoration: none;
+    color: white;
+}
+
+.log-meal-btn {
+    padding: 1rem 2rem;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #ff582a;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.log-meal-btn:hover {
+    background: #e84a1e;
+}
+.food-page {
+    min-height: 100vh;
+
+    padding: 140px 80px 80px;
+
+    background: url("/static/img/Home-Bg-Img.jpg") center/cover;
+}
+
+.food-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 3rem;
+}
+
+.food-header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: white;
+}
+
+/* TABLE *//* FOOD TABLE */
+
+.food-list {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.food-list table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Column widths */
+.food-list th:nth-child(1),
+.food-list td:nth-child(1) {
+    width: 40%;
+}
+
+.food-list th:nth-child(2),
+.food-list td:nth-child(2) {
+    width: 40%;
+}
+
+.food-list th:nth-child(3),
+.food-list td:nth-child(3) {
+    width: 20%;
+    text-align: center;
+}
+
+.food-list th {
+    padding: 1.5rem 2rem;
+
+    background: #222;
+    color: white;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    text-align: left;
+}
+
+.food-list td {
+    padding: 1.5rem 0;
+
+    font-size: 1.1rem;
+    color: #444;
+
+    border-bottom: 1px solid #ececec;
+}
+
+.food-list tbody tr {
+    transition: background 0.2s ease;
+}
+
+.food-list tbody tr td {
+    padding-left: 2rem;
+}
+
+
+.food-empty {
+    padding: 4rem;
+
+    background: white;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.food-empty h2 {
+    margin-bottom: 1rem;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #222;
+}
+
+.food-empty p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* DROPDOWN / ENTRIES */
+
+.entries-row {
+    display: none;
+}
+
+.entries-row.active {
+    display: table-row;
+}
+
+.entries-content {
+    padding: 2rem;
+}
+
+.entry-list {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+
+.entry-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 0;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.entry-item:last-child {
+    border-bottom: none;
+}
+
+.entry-name {
+    color: #222;
+    font-weight: 600;
+}
+
+.entry-calories {
+    color: #ff582a !important;
+    font-weight: 700;
+}
+
+.no-entries {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* EXPAND BUTTON */
+
+.expand-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.expand-btn:hover {
+    background: rgba(255, 88, 42, 0.12);
+}
+
+.food-list .material-symbols-outlined {
+    font-size: 40px !important;
+    color: #222;
+}
+
+/* ADD FOOD BUTTON */
+
+.add-food-btn {
+    padding: 0.9rem 1.6rem;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #222;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.add-food-btn:hover {
+    background: #ff582a;
+    transform: translateY(-2px);
+}
+
+/* MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    z-index: 2000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.meal-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 2.5rem;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.meal-modal h3 {
+    margin-bottom: 2rem;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #222;
+}
+
+/* FORM */
+
+.meal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meal-form label {
+    font-weight: 700;
+    color: #222;
+}
+
+.meal-form input,
+.meal-form select {
+    width: 100%;
+
+    padding: 1rem;
+
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 1rem;
+    font-family: inherit;
+
+    transition: border-color 0.2s ease;
+}
+
+.meal-form input:focus,
+.meal-form select:focus {
+    outline: none;
+    border-color: #ff582a;
+}
+
+/* CLOSE BUTTON */
+
+.close-modal {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.close-modal:hover {
+    background: #f2f2f2;
+}
+
+.close-modal .material-symbols-outlined {
+    font-size: 30px !important;
+    color: #222;
+}
+
+
+#foodEntriesTable {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+#foodEntriesTable td {
+    padding: 20px 0;
+}
+.workout-page {
+    min-height: 100vh;
+    padding: 140px 80px 80px;
+    background: url("/static/img/Home-Bg-Img.jpg") center/cover;
+}
+
+.workout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 3rem;
+}
+
+.workout-header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4rem;
+    color: #fff;
+}
+
+.burn-badge {
+    padding: 1rem 1.5rem;
+
+    border-radius: 12px;
+
+    background: #ff582a;
+    color: white;
+
+    font-weight: 700;
+}
+
+.exercise-list {
+    display: flex;
+    gap: 2rem;
+}
+
+.exercise-card {
+    padding: 2rem;
+
+    width: 100%;
+
+    height: 370px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.exercise-card h2 {
+    margin-bottom: 0.5rem;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+}
+
+.exercise-card p {
+    margin-bottom: 12rem;
+
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.exercise-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.exercise-actions form {
+    flex: 1;
+}
+
+.swap-btn {
+    width: 100%;
+
+    padding: 0.8rem;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+.finish-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+    cursor: pointer;
+}
+
+.finish-btn .material-symbols-outlined {
+    color: black;
+    transform: 0.15s ease, opacity 0.15s ease;
+}
+
+.finish-btn:active .material-symbols-outlined {
+    transform: scale(0.7);
+}
+
+.finish-btn.completed .material-symbols-outlined {
+    animation: complete-pop 0.35s ease;
+}
+
+@keyframes complete-pop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.finish-btn.completed .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1;
+}
+
+.swap-btn {
+    background: #222;
+    color: white;
+}
+
+.swap-btn:hover {
+    background: #444;
+}
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.6);
+
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.swap-modal {
+    width: 90%;
+    max-width: 500px;
+
+    padding: 2rem;
+
+    background: white;
+
+    border-radius: 16px;
+
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    border: none;
+    background: none;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+.swap-modal h2 {
+    margin-bottom: 2rem;
+
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.swap-option {
+    display: flex;
+    gap: 1rem;
+
+    padding: 1rem;
+
+    margin-bottom: 1rem;
+
+    border: 2px solid #eee;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.swap-option:hover {
+    border-color: #ff582a;
+}
+
+.swap-option div {
+    display: flex;
+    flex-direction: column;
+}
+
+.replace-btn {
+    width: 100%;
+
+    margin-top: 1rem;
+    padding: 1rem;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #ff582a;
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.replace-btn:hover {
+    background: #e84a1e;
+}
